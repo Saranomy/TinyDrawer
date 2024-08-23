@@ -1,24 +1,22 @@
 # TinyDrawer
 
-[Features](#features)
-[Get Started](#get_started)
-[Limitations](#limitations)
-[License](#license)
+- [Features](#features)
+- [Get Started](#get_started)
+- [Limitations](#limitations)
+- [License](#license)
 
 ## 2D Game Engine for Pi Pico
 TinyDrawer is a compact game engine for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org) by [Saranomy](https://github.com/Saranomy). In its current development stage, it has a collection of methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) to ultimately render pixels to [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html). 
 
-![alt text](./images/waveshare_pico_lcd_1_14.gif)
-*Running example_mario.py on [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14)*
-
-![alt text](./images/zjy169s0800tg01.gif)
-*Running example_mario.py on [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html)*
+| [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) | [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html) |
+| - | - |
+| ![waveshare screen](./images/waveshare_pico_lcd_1_14.gif) | ![zhongjungyuan screen](./images/zjy169s0800tg01.gif) |
 
 <a name="features"></a>
 
 ## Features
 
-#### Create TinyDrawer
+#### TinyDrawer
 
 ```python
 import tiny_drawer
@@ -27,9 +25,10 @@ import tiny_drawer
 td = tiny_drawer.TinyDrawer()
 ```
 
-Change the zoom level and display's width and height
+You can change the zoom level and display's width and height
 
 ```python
+# Initilize TinyDrawer
 td = tiny_drawer.TinyDrawer(display_w = 240, display_h = 135, zoom = 5)
 ```
 
@@ -82,22 +81,22 @@ TinyDrawer comes with 16 colors:
 
 | Index | Name | RGB8 | Hex |
 | - | - | - | - |
-| 0 | Black | 0, 0, 0 | <span style="color: #ffffff; background-color: #000000; padding: 4px">#000000</span> |
-| 1 | Dark Blue | 36, 36, 73 | <span style="color: #ffffff; background-color: #242449; padding: 4px">#242449</span> |
-| 2 | Dark Purple | 109, 36, 73 | <span style="color: #ffffff; background-color: #6d2449; padding: 4px">#6D2449</span> |
-| 3 | Dark Green | 0, 146, 73 | <span style="color: #ffffff; background-color: #009249; padding: 4px">#009249</span> |
-| 4 | Brown | 182, 73, 36 | <span style="color: #ffffff; background-color: #b64924; padding: 4px">#B64924</span> |
-| 5 | Dark Grey | 109, 109, 73 | <span style="color: #ffffff; background-color: #6d6d49; padding: 4px">#6D6D49</span> |
-| 6 | Light Grey | 182, 182, 182 | <span style="color: #ffffff; background-color: #b6b6b6; padding: 4px">#B6B6B6</span> |
-| 7 | White | 256, 256, 256 | <span style="color: #000000; background-color: #ffffff; padding: 4px">#FFFFFF</span> |
-| 8 | Red | 255, 0, 73 | <span style="color: #ffffff; background-color: #ff0048; padding: 4px">#FF0048</span> |
-| 9 | Orange | 255, 145, 0 | <span style="color: #ffffff; background-color: #ff9100; padding: 4px">#FF9100</span> |
-| 10 | Yellow | 255, 219, 36 | <span style="color: #000000; background-color: #ffdb24; padding: 4px">#FFDB24</span> |
-| 11 | Green | 0, 255, 36 | <span style="color: #000000; background-color: #00ff22; padding: 4px">#00FF22</span> |
-| 12 | Blue | 36, 182, 255 | <span style="color: #ffffff; background-color: #24b6ff; padding: 4px">#24B6FF</span> |
-| 13 | Lavender | 146, 109, 146 | <span style="color: #ffffff; background-color: #926d92; padding: 4px">#926d92</span> |
-| 14 | Pink | 255, 73, 146 | <span style="color: #ffffff; background-color: #ff4992; padding: 4px">#FF4992</span> |
-| 15 | Light Peach | 255, 219, 182 | <span style="color: #000000; background-color: #ffdbb6; padding: 4px">#ffDBB6</span> |
+| 0 | Black | `rgb(0, 0, 0)` | `#000000` |
+| 1 | Dark Blue |`rgb( 36, 36, 73)` | `#242449` |
+| 2 | Dark Purple | `rgb(109, 36, 73)` | `#6D2449` |
+| 3 | Dark Green | `rgb(0, 146, 73)` | `#009249` |
+| 4 | Brown | `rgb(182, 73, 36)` | `#B64924` |
+| 5 | Dark Grey | `rgb(109, 109, 73)` | `#6D6D49` |
+| 6 | Light Grey | `rgb(182, 182, 182)` | `#B6B6B6` |
+| 7 | White | `rgb(256, 256, 256)` | `#FFFFFF` |
+| 8 | Red | `rgb(255, 0, 73)` | `#FF0048` |
+| 9 | Orange | `rgb(255, 145, 0)` | `#FF9100` |
+| 10 | Yellow | `rgb(255, 219, 36)` | `#FFDB24` |
+| 11 | Green | `rgb(0, 255, 36)` | `#00FF22` |
+| 12 | Blue | `rgb(36, 182, 255)` | `#24B6FF` |
+| 13 | Lavender | `rgb(146, 109, 146)` | `#926d92` |
+| 14 | Pink | `rgb(255, 73, 146)` | `#FF4992` |
+| 15 | Light Peach | `rgb(255, 219, 182)` | `#ffDBB6` |
 
 To use a color on the framebuf, call `color(index)` to get the int number in RGB565 color format.
 
