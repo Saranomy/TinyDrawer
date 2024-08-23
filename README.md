@@ -92,7 +92,7 @@ TinyDrawer comes with 16 colors:
 | 8 | Red | ![#FF0048](https://via.placeholder.com/15/FF0048/000000?text=+) `#FF0048` |
 | 9 | Orange | ![#FF9100](https://via.placeholder.com/15/FF9100/000000?text=+) `#FF9100` |
 | 10 | Yellow | ![#FFDB24](https://via.placeholder.com/15/FFDB24/000000?text=+) `#FFDB24` |
-| 11 | Green | ![#00FF22](https://via.placeholder.com/15/00FF22/000000?text=+) `#00FF22` |
+| 11 | Green | ![#00FF24](https://via.placeholder.com/15/00FF24/000000?text=+) `#00FF24` |
 | 12 | Blue | ![#24B6FF](https://via.placeholder.com/15/24B6FF/000000?text=+) `#24B6FF` |
 | 13 | Lavender | ![#926d92](https://via.placeholder.com/15/926d92/000000?text=+) `#926d92` |
 | 14 | Pink | ![#6D2449](https://via.placeholder.com/15/6D2449/000000?text=+) `#FF4992` |
