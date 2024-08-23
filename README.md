@@ -6,7 +6,7 @@
 - [License](#license)
 
 ## 2D Game Engine for Pi Pico
-TinyDrawer is a compact game engine for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org) by [Saranomy](https://github.com/Saranomy). In its current development stage, it has a collection of methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) to ultimately render pixels to [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html). 
+TinyDrawer is a compact game engine for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org) by [Saranomy](https://github.com/Saranomy). In its current development stage, it has a collection of methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) to ultimately render pixels to [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
 
 | [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) | [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html) |
 | - | - |
@@ -79,24 +79,24 @@ td.spr(fb, 8, 0, 0, flip_x = True)
 #### Color
 TinyDrawer comes with 16 colors:
 
-| Index | Name | RGB8 | Hex |
-| - | - | - | - |
-| 0 | Black | `rgb(0, 0, 0)` | ![#000000](https://via.placeholder.com/15/000000/000000?text=+) `#000000` |
-| 1 | Dark Blue |`rgb( 36, 36, 73)` | ![#242449](https://via.placeholder.com/15/242449/000000?text=+) `#242449` |
-| 2 | Dark Purple | `rgb(109, 36, 73)` | ![#6D2449](https://via.placeholder.com/15/6D2449/000000?text=+) `#6D2449` |
-| 3 | Dark Green | `rgb(0, 146, 73)` | ![#009249](https://via.placeholder.com/15/009249/000000?text=+) `#009249` |
-| 4 | Brown | `rgb(182, 73, 36)` | ![#B64924](https://via.placeholder.com/15/B64924/000000?text=+) `#B64924` |
-| 5 | Dark Grey | `rgb(109, 109, 73)` | ![#6D6D49](https://via.placeholder.com/15/6D6D49/000000?text=+) `#6D6D49` |
-| 6 | Light Grey | `rgb(182, 182, 182)` | ![#B6B6B6](https://via.placeholder.com/15/B6B6B6/000000?text=+) `#B6B6B6` |
-| 7 | White | `rgb(256, 256, 256)` | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` |
-| 8 | Red | `rgb(255, 0, 73)` | ![#FF0048](https://via.placeholder.com/15/FF0048/000000?text=+) `#FF0048` |
-| 9 | Orange | `rgb(255, 145, 0)` | ![#FF9100](https://via.placeholder.com/15/FF9100/000000?text=+) `#FF9100` |
-| 10 | Yellow | `rgb(255, 219, 36)` | ![#FFDB24](https://via.placeholder.com/15/FFDB24/000000?text=+) `#FFDB24` |
-| 11 | Green | `rgb(0, 255, 36)` | ![#00FF22](https://via.placeholder.com/15/00FF22/000000?text=+) `#00FF22` |
-| 12 | Blue | `rgb(36, 182, 255)` | ![#24B6FF](https://via.placeholder.com/15/24B6FF/000000?text=+) `#24B6FF` |
-| 13 | Lavender | `rgb(146, 109, 146)` | ![#926d92](https://via.placeholder.com/15/926d92/000000?text=+) `#926d92` |
-| 14 | Pink | `rgb(255, 73, 146)` | ![#6D2449](https://via.placeholder.com/15/6D2449/000000?text=+) `#FF4992` |
-| 15 | Light Peach | `rgb(255, 219, 182)` | ![#ffDBB6](https://via.placeholder.com/15/ffDBB6/000000?text=+) `#FFDBB6` |
+| Index | Name | Hex |
+| - | - | - |
+| 0 | Black | ![#000000](https://via.placeholder.com/15/000000/000000?text=+) `#000000` |
+| 1 | Dark Blue | ![#242449](https://via.placeholder.com/15/242449/000000?text=+) `#242449` |
+| 2 | Dark Purple | ![#6D2449](https://via.placeholder.com/15/6D2449/000000?text=+) `#6D2449` |
+| 3 | Dark Green | ![#009249](https://via.placeholder.com/15/009249/000000?text=+) `#009249` |
+| 4 | Brown | ![#B64924](https://via.placeholder.com/15/B64924/000000?text=+) `#B64924` |
+| 5 | Dark Grey | ![#6D6D49](https://via.placeholder.com/15/6D6D49/000000?text=+) `#6D6D49` |
+| 6 | Light Grey | ![#B6B6B6](https://via.placeholder.com/15/B6B6B6/000000?text=+) `#B6B6B6` |
+| 7 | White | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `#FFFFFF` |
+| 8 | Red | ![#FF0048](https://via.placeholder.com/15/FF0048/000000?text=+) `#FF0048` |
+| 9 | Orange | ![#FF9100](https://via.placeholder.com/15/FF9100/000000?text=+) `#FF9100` |
+| 10 | Yellow | ![#FFDB24](https://via.placeholder.com/15/FFDB24/000000?text=+) `#FFDB24` |
+| 11 | Green | ![#00FF22](https://via.placeholder.com/15/00FF22/000000?text=+) `#00FF22` |
+| 12 | Blue | ![#24B6FF](https://via.placeholder.com/15/24B6FF/000000?text=+) `#24B6FF` |
+| 13 | Lavender | ![#926d92](https://via.placeholder.com/15/926d92/000000?text=+) `#926d92` |
+| 14 | Pink | ![#6D2449](https://via.placeholder.com/15/6D2449/000000?text=+) `#FF4992` |
+| 15 | Light Peach | ![#ffDBB6](https://via.placeholder.com/15/ffDBB6/000000?text=+) `#FFDBB6` |
 
 To use a color on the framebuf, call `color(index)` to get the int number in RGB565 color format.
 
