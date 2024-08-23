@@ -30,10 +30,10 @@ PIN_RIGHT = 20
 
 FPS = 30
 SHOW_FPS = True
-display_w = 240 # 300
-display_h = 135 # 240
+display_w = 240
+display_h = 135
 
-td = tiny_drawer.TinyDrawer()
+td = tiny_drawer.TinyDrawer(display_w = display_w, display_h = display_h)
 
 class Coin:
     def __init__(self, x, y, fb):
