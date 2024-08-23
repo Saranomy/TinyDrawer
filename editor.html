@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TinyDrawer</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(64, 10px);
+      grid-template-rows: repeat(32, 10px);
+      gap: 1px;
+      background-color: #000;
+      border: 1px solid #000;
+    }
+    .cell {
+      width: 10px;
+      height: 10px;
+      background-color: #000;
+    }
+    #palette {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .color {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+      cursor: pointer;
+      border: 2px solid #000;
+    }
+    .color.selected {
+      border: 2px solid #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    #raw {
+      margin-top: 20px;
+    }
+    input {
+      width: 640px;
+    }
+  </style>
+</head>
+<body>
+<h1>TinyDrawer Sprite Buffer Editor</h1>
+<div id="grid"></div>
+<div id="palette"></div>
+<div id="raw">
+  <span>Hex String</span>
+  <input type="text" id="hexString" />
+</div>
+<script>
+  const grid = document.getElementById('grid')
+  const palette = document.getElementById('palette')
+  const colors = [
+    '#000000', '#242449', '#6d2449', '#009249',
+    '#b64924', '#6d6d49', '#b6b6b6', '#ffffff',
+    '#ff0048', '#ff9100', '#ffdb24', '#00ff22',
+    '#24b6ff', '#926d92', '#ff4992', '#ffdbb6'
+  ]
+  let selectedColorIndex = 4
+  let isDrawing = false
+  let hexData = ''
+  let isProgrammaticChange = false
+
+  const hexString = document.getElementById('hexString')
+
+  // Detect change from user
+  hexString.addEventListener('input', (event) => {
+    if (!isProgrammaticChange || document.activeElement === hexString) {
+      let content = hexString.value
+      if (content.length === 32 * 64) {
+        const cells = document.querySelectorAll('.cell')
+        for (let i = 0; i < content.length; i++) {
+          const colorIndex = parseInt(content[i], 16)
+          cells[i].style.backgroundColor = colors[colorIndex]
+          cells[i].dataset.colorIndex = colorIndex.toString()
+        }
+      }
+    }
+    // Reset the flag after detecting user change
+    isProgrammaticChange = false
+  });
+
+  for (let i = 0; i < 16; i++) {
+    const c = document.createElement('div')
+    c.className = 'color'
+    c.style.backgroundColor = colors[i]
+    c.setAttribute('data-value', i.toString())
+    palette.appendChild(c)
+  }
+
+  // Create grid
+  for (let i = 0; i < 32 * 64; i++) {
+    const cell = document.createElement('div')
+    cell.className = 'cell'
+    cell.dataset.colorIndex = '0'
+    if(i % 8 === 0) {
+      cell.style.marginRight = '8px'
+    }
+    grid.appendChild(cell)
+    hexData += '0'
+  }
+  isProgrammaticChange = true
+  hexString.value = hexData
+
+  // Color selection
+  palette.addEventListener('click', (e) => {
+    if (e.target.classList.contains('color')) {
+      document.querySelector('.color.selected')?.classList.remove('selected')
+      e.target.classList.add('selected')
+      selectedColorIndex = parseInt(e.target.dataset.value)
+    }
+  })
+
+  // Drawing functionality
+  grid.addEventListener('mousedown', startDrawing)
+  grid.addEventListener('mousemove', draw)
+  grid.addEventListener('mouseup', stopDrawing)
+  grid.addEventListener('mouseleave', stopDrawing)
+
+  function startDrawing(e) {
+    isDrawing = true
+    draw(e)
+  }
+
+  function draw(e) {
+    if (!isDrawing) return
+    if (e.target.classList.contains('cell')) {
+      e.target.style.backgroundColor = colors[selectedColorIndex]
+      e.target.dataset.colorIndex = selectedColorIndex
+    }
+    hexData = ''
+    document.querySelectorAll('.cell').forEach(cell => {
+      hexData += cell.dataset.colorIndex
+    })
+    isProgrammaticChange = true;
+    hexString.value = hexData
+  }
+
+  function stopDrawing() {
+    isDrawing = false
+  }
+</script>
+</body>
+</html>
