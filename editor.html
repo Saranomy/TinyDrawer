@@ -143,10 +143,11 @@
     }
     hexData = ''
     document.querySelectorAll('.cell').forEach(cell => {
-      hexData += cell.dataset.colorIndex
+      hexData += parseInt(cell.dataset.colorIndex).toString(16)
     })
     isProgrammaticChange = true;
     hexString.value = hexData
+    console.log(hexData)
   }
 
   function stopDrawing() {
