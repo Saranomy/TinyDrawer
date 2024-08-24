@@ -3,7 +3,7 @@
 # Created by Saranomy 2024.
 # ----------------------------------------------------------------------------
 
-from machine import Pin,SPI,PWM
+from machine import Pin, SPI, PWM
 import framebuf, time, random, micropython, tiny_drawer, math
 from lcd_1inch14 import LCD_1inch14
 
@@ -119,7 +119,6 @@ if __name__=='__main__':
     key5 = Pin(PIN_DOWN, Pin.IN, Pin.PULL_UP)
     key6 = Pin(PIN_RIGHT, Pin.IN, Pin.PULL_UP)
     
-    start_time = time.ticks_ms()
     elapsed_time = 1000
     f = FPS
     
@@ -139,6 +138,8 @@ if __name__=='__main__':
     micropython.mem_info()
     
     while(1):
+        start_time = time.ticks_ms()
+        
         # clear 3 rows above the ground
         fb.fill_rect(0, display_h - 4 * step, display_w, 3 * step, td.color(1))
             
@@ -161,22 +162,22 @@ if __name__=='__main__':
             player.move(1)
         
         # draw tiles
-        for y in range(0, len(tiles)):
-            for x in range(0, len(tiles[0])):
+        for y in range(len(tiles)):
+            for x in range(len(tiles[0])):
                 if tiles[y][x] >= 0:
-                    td.spr(fb, tiles[y][x], x * 8 * td.zoom, display_h - 8 * td.zoom * 2 * len(tiles) + (y+1) * 8 * td.zoom)
+                    td.spr(fb, tiles[y][x], x * 8 * td.zoom, display_h - 8 * td.zoom * 2 * len(tiles) + (y + 1) * 8 * td.zoom)
         coin.draw()
         player.draw()
         
+        # ship the frame
         fb.show()
         
-        if SHOW_FPS:
-            # update fps
-            end_time = time.ticks_ms()
-            elapsed_time = time.ticks_diff(end_time, start_time)
-            if elapsed_time < 1000 / FPS:
-                time.sleep(elapsed_time - 1000/FPS)
-                f = FPS
-            else:
-                f = "{:.1f}".format(1000 / elapsed_time)
-            start_time = end_time
+        # update fps
+        end_time = time.ticks_ms()
+        elapsed_time = time.ticks_diff(end_time, start_time)
+        frame_time = 1000 / FPS
+        if elapsed_time < frame_time:
+            time.sleep((frame_time - elapsed_time) / 1000)
+            f = FPS
+        elif SHOW_FPS:
+            f = "{:.1f}".format(1000 / elapsed_time)
