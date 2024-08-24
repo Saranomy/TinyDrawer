@@ -66,16 +66,16 @@ class Snake:
         self.di = -1
         alive = True
         self.tails = [[self.x, self.y]]
-        self.tail_max = 30
-        
+        self.tail_max = 4
+    
     def change_direction(self, di):
-        global alive
+        global alive, score
         if not alive:
             alive = True
             self.di = -1
             self.x, self.y = self.x0, self.y0
             self.tails = [[self.x, self.y]]
-            self.tail_max = 3
+            self.tail_max = 4
             apple.reposition()
             score = 0
         if (di == 0 and self.di != 2) or (di == 1 and self.di != 3) or (di == 2 and self.di != 0) or (di == 3 and self.di != 1):
@@ -86,9 +86,9 @@ class Snake:
         if alive:
             # update tails
             if len(self.tails) >= self.tail_max:
-                self.tails.pop(len(self.tails) - 1)
+                self.tails.pop(0)
             if self.di >= 0:
-                self.tails.insert(0, [self.x, self.y])
+                self.tails.append([self.x, self.y])
             # update position
             if self.di == 0: # up
                 self.y -= step
@@ -99,23 +99,23 @@ class Snake:
             elif self.di == 3 : # left
                 self.x -= step
             # handle out of bounds
-            if self.x < start_x and self.di == 3:
+            if self.di == 3 and self.x < start_x:
                 self.x = start_x + (nx - 1) * step
-            elif self.x > start_x + (nx - 1) * step and self.di == 1:
+            elif self.di == 1 and self.x > start_x + (nx - 1) * step:
                 self.x = start_x
-            elif self.y < start_y and self.di == 0:
+            elif self.di == 0 and self.y < start_y:
                 self.y = start_y + (ny - 1) * step
-            elif self.y > start_y + (ny - 1) * step and self.di == 2:
+            elif self.di == 2 and self.y > start_y + (ny - 1) * step:
                 self.y = start_y
-        # eat apple
-        if self.x == apple.x and self.y == apple.y:
-            apple.reposition()
-            score += 1
-            self.tail_max += 1
+            # eat apple
+            if self.x == apple.x and self.y == apple.y:
+                apple.reposition()
+                score += 1
+                self.tail_max += 1
     
         for idx, t in enumerate(self.tails):
             n = 2
-            if idx == 0:
+            if idx == len(self.tails) - 1:
                 n = 1
             elif self.x == t[0] and self.y == t[1]:
                 # hit its tail
@@ -127,7 +127,7 @@ if __name__=='__main__':
         
     pwm = PWM(Pin(BL))
     pwm.freq(1000)
-    pwm.duty_u16(20000) # brightness [0-32768-65535]
+    pwm.duty_u16(65535) # brightness [0-32768-65535]
 
     fb = LCD_1inch14(CS, RST, DC, MOSI, SCK, width=display_w, height=display_h)
     
@@ -155,16 +155,14 @@ if __name__=='__main__':
     # report stat before entering draw loop
     micropython.mem_info()
     
+    bar_step = 8 * (td.zoom + 1)
+    
     while(1):
         start_time = time.ticks_ms()
-        if(keyA.value() == 0): # a
-            score += 1
         if(keyB.value() == 0): # b
-            print("b")
+            score += 1
         if(key2.value() == 0): # up
             snake.change_direction(0)
-        if(key3.value() == 0): # ctrl
-            print("ctrl")
         if(key4.value() == 0): # left
             snake.change_direction(3)
         if(key5.value() == 0): # down
@@ -181,7 +179,6 @@ if __name__=='__main__':
                 
         # increase the zoom level to draw score
         td.zoom += 1
-        bar_step = 8 * td.zoom
         fb.fill_rect(0, display_h - bar_step, bar_step * 3, bar_step, td.color(0))
         td.spr(fb, 0, 0, display_h - bar_step)
         td.spr(fb, 8 + (score // 10) % 10, bar_step, display_h - bar_step)

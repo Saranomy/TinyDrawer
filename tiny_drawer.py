@@ -16,6 +16,7 @@ class TinyDrawer:
             buffer_h (int): A number of sprites the buffer can store vertically
             display_w (int): Width of the display in pixels
             display_h (int): Height of the display in pixels
+            zoom (int): Scale of the pixels
         """
         self.buffer_w = buffer_w
         self.buffer_h = buffer_h
@@ -92,34 +93,36 @@ class TinyDrawer:
             flip_x (bool): True to flip the sprite horizontally when drawing
             flip_y (bool): True to flip the sprite vertically when drawing
         """
-        bw = self.buffer_w
-        bx0 = (n % bw) * 8
-        bx1 = bx0 + w * 8
+        w8, h8 = w * 8, h * 8
+        bx0 = (n % self.buffer_w) * 8
+        bx1 = bx0 + w8
         if n == 0:
-            by0, by1 = 0, h * 8
+            by0, by1 = 0, h8
         else:
-            by0 = (n // bw) * 8
-            by1 = by0 + h * 8
-        h_add = self.zoom
-        v_add = self.zoom
+            by0 = (n // self.buffer_w) * 8
+            by1 = by0 + h8
         if flip_x:
             h_add = -h_add
-            x += w * 8 * self.zoom
+            x += w8 * self.zoom
+        else:
+            h_add = self.zoom
         if flip_y:
             v_add = -v_add
-            y += (h * 8  - 1) * self.zoom
+            y += (h8 - 1) * self.zoom
+        else:
+            v_add = self.zoom
         dy = y
         for by in range(by0, by1):
             dx = x
             for bx in range(bx0, bx1):
-                c = self.buffer[by * bw * 8 + bx]
+                c = self.buffer[by * self.buffer_w * 8 + bx]
                 c_pal = c in self.pal_dict
-                if c_pal:
-                    c = self.pal_dict[c]
                 if c_pal or c != 0:
+                    if c_pal:
+                        c = self.pal_dict[c]
                     fb.fill_rect(dx, dy, self.zoom, self.zoom, self.colors[c])
-                dx = dx + h_add
-            dy = dy + v_add
+                dx += h_add
+            dy += v_add
             
     def pal(self, c0: int = None, c1: int = None):
         """
