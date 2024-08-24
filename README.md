@@ -159,9 +159,8 @@ class LCD_1inch14(framebuf.FrameBuffer):
     ...
 ```
 
-4. Upload `tiny_drawer.py` to the Pi Pico
-5. Upload `example_mario.py` to the Pi Pico. You can change it to `main.py`
-6. Open `example_mario.py` on Thonny, and check the configuration of TinyDrawer
+4. Upload `tiny_drawer.py`, `example_mario.py` to the Pi Pico
+5. Open `example_mario.py` on Thonny, and check the configuration of TinyDrawer
 
 ```python
 display_w = 240
@@ -171,8 +170,10 @@ td = tiny_drawer.TinyDrawer(display_w = display_w, display_h = display_h)
 ...
 ```
 
-8. Run the `example_mario.py` on the Pi Pico
-9. On [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14), press the B button to turn off the Mario's autorun mode. Then you can move the player using left stick, right stick and the A button.
+6. Run the `example_mario.py` on the Pi Pico. On [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14), press the B button to turn off the Mario's autorun mode. Then you can move the player using left stick, right stick and the A button.
+
+![waveshare snake](./images/snake_on_lcd_1_14.gif)
+*Running example_snake.py*
 
 <a name="license"></a>
 
