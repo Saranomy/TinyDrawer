@@ -173,7 +173,7 @@ td = tiny_drawer.TinyDrawer(display_w = display_w, display_h = display_h)
 6. Run the `example_mario.py` on the Pi Pico. On [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14), press the B button to turn off the Mario's autorun mode. Then you can move the player using left stick, right stick and the A button.
 
 #### Next Step
-Upload `example_snake.py` and it
+Upload `example_snake.py` and run it
 
 ![waveshare snake](./images/snake_on_lcd_1_14.gif)
 
