@@ -187,7 +187,7 @@ Updating more pixels means a drop in framerate since we have to constantly run `
 From the `example_mario.py`
 - The floor of the level (as well as the background above the coin) is drawn only once before entering the game loop since the player cannot obstruct its view and the camera does not need to move.
 
-In the future, we plan to introduce multi-thread to speed up the drawing process.
+We will keep optimizing the drawing functions. Feel free to contribute to the project.
 
 <a name="license"></a>
 
