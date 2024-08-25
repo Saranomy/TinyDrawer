@@ -4,8 +4,9 @@
 # ----------------------------------------------------------------------------
 
 from machine import Pin, SPI, PWM
-import framebuf, time, random, micropython, tiny_drawer, math
+import framebuf, time, random, micropython, math
 from lcd_1inch14 import LCD_1inch14
+from tinydrawer import TinyDrawer
 
 # setup for lcd_1inch14.py
 
@@ -33,7 +34,7 @@ SHOW_FPS = True
 display_w = 240
 display_h = 135
 
-td = tiny_drawer.TinyDrawer(display_w = display_w, display_h = display_h)
+td = TinyDrawer(display_w = display_w, display_h = display_h)
 
 class Coin:
     def __init__(self, x, y, fb):
