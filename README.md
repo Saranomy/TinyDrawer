@@ -1,5 +1,7 @@
 # TinyDrawer
 
+Install [TinyDrawer](https://pypi.org/project/tinydrawer/) package on [Thonny](https://thonny.org)
+
 - [Features](#features)
 - [Get Started](#get_started)
 - [Limitations](#limitations)
@@ -147,7 +149,7 @@ In this demo, we will use [Pi Pico W](https://www.pishop.ca/product/raspberry-pi
 #### Install
 
 1. Complete the Get Started guide with the [Pi Pico](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico)
-2. Open [Thonny](https://thonny.org/), and connect to the Pi Pico
+2. Open [Thonny](https://thonny.org), and connect to the Pi Pico
 
 ![thonny](./images/thonny.png)
 
