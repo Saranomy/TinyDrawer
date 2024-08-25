@@ -1,6 +1,6 @@
 # TinyDrawer
 
-Install [TinyDrawer]() package on [Thonny](https://thonny.org)
+Install [TinyDrawer](https://pypi.org/project/tinydrawer) package on [Thonny](https://thonny.org)
 
 - [Features](#features)
 - [Get Started](#get_started)
