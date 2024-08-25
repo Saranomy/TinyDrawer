@@ -5,7 +5,7 @@
 - [Limitations](#limitations)
 - [License](#license)
 
-## 2D Game for Pi Pico
+## 2D Games for Pi Pico
 TinyDrawer is a collection of drawing methods for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org) by [Saranomy](https://github.com/Saranomy). In its current development stage, it has a collection of methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) to ultimately render pixels to [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
 
 | [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) | [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html) |
@@ -123,13 +123,13 @@ Another example, we can turn Mario into Luigi by swapping colors on sprite `0`
 
 ```python
 # replace any red with green
-pal(8, 11) 
+td.pal(8, 11) 
 
 # draw mario sprite
-spr(fb, 0, 100, 100)
+td.spr(fb, 0, 100, 100)
 
 # reset the color replacement
-pal()
+td.pal()
 ```
 
 <a name="get_started"></a>
@@ -184,8 +184,8 @@ Upload `example_snake.py` and run it
 
 Updating more pixels means a drop in framerate since we have to constantly run `spr()`. 
 
-From the `example_mario.py`
-- The floor of the level (as well as the background above the coin) is drawn only once before entering the game loop since the player cannot obstruct its view and the camera does not need to move.
+Comment on the `example_mario.py`
+- Since the camera does not move, the floor of the level and the background above the coin are drawn before entering the game loop. It won't send the updated pixels to the framebuf to save the computation time.
 
 We will keep optimizing the drawing functions. Feel free to contribute to the project.
 
