@@ -76,17 +76,21 @@
 
   const hexString = document.getElementById('hexString')
 
+  function updateGrid(content) {
+    const cells = document.querySelectorAll('.cell')
+    for (let i = 0; i < content.length; i++) {
+      const colorIndex = parseInt(content[i], 16)
+      cells[i].style.backgroundColor = colors[colorIndex]
+      cells[i].dataset.colorIndex = colorIndex.toString()
+    }
+  }
+
   // Detect change from user
   hexString.addEventListener('input', (event) => {
     if (!isProgrammaticChange || document.activeElement === hexString) {
       let content = hexString.value
       if (content.length === 32 * 64) {
-        const cells = document.querySelectorAll('.cell')
-        for (let i = 0; i < content.length; i++) {
-          const colorIndex = parseInt(content[i], 16)
-          cells[i].style.backgroundColor = colors[colorIndex]
-          cells[i].dataset.colorIndex = colorIndex.toString()
-        }
+        updateGrid(content)
       }
     }
     // Reset the flag after detecting user change
@@ -102,18 +106,20 @@
   }
 
   // Create grid
-  for (let i = 0; i < 32 * 64; i++) {
-    const cell = document.createElement('div')
-    cell.className = 'cell'
-    cell.dataset.colorIndex = '0'
-    if(i % 8 === 0) {
-      cell.style.marginRight = '8px'
+  for (let y = 0; y < 32; y++) {
+    let index = Math.floor(y / 8)
+    for (let x = 0; x < 64; x++) {
+      const cell = document.createElement('div')
+      cell.className = 'cell'
+      if(x > 0 && x % 8 == 0) index++
+      cell.dataset.colorIndex = index.toString(16)
+      grid.appendChild(cell)
+      hexData += cell.dataset.colorIndex
     }
-    grid.appendChild(cell)
-    hexData += '0'
   }
   isProgrammaticChange = true
   hexString.value = hexData
+  updateGrid(hexData)
 
   // Color selection
   palette.addEventListener('click', (e) => {
