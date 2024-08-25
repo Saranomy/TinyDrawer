@@ -5,8 +5,8 @@
 - [Limitations](#limitations)
 - [License](#license)
 
-## 2D Game Engine for Pi Pico
-TinyDrawer is a compact game engine for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org) by [Saranomy](https://github.com/Saranomy). In its current development stage, it has a collection of methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) to ultimately render pixels to [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
+## 2D Game for Pi Pico
+TinyDrawer is a collection of drawing methods for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org) by [Saranomy](https://github.com/Saranomy). In its current development stage, it has a collection of methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) to ultimately render pixels to [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
 
 | [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) | [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html) |
 | - | - |
