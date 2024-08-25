@@ -102,12 +102,12 @@ class TinyDrawer:
             by0 = (n // self.buffer_w) * 8
             by1 = by0 + h8
         if flip_x:
-            h_add = -h_add
+            h_add = -self.zoom
             x += w8 * self.zoom
         else:
             h_add = self.zoom
         if flip_y:
-            v_add = -v_add
+            v_add = -self.zoom
             y += (h8 - 1) * self.zoom
         else:
             v_add = self.zoom

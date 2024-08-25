@@ -10,7 +10,7 @@ TinyDrawer is a collection of drawing methods for [Rasberry Pi Pico devices](htt
 
 | [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) | [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html) |
 | - | - |
-| ![waveshare screen](https://github.com/Saranomy/TinyDrawer/blob/main/images/waveshare_pico_lcd_1_14.gif?raw=true) | ![zhongjungyuan screen](https://github.com/saranomy/tinydrawer/blob/main/images/zjy169s0800tg01.gif?raw=true) |
+| ![waveshare screen](./images/waveshare_pico_lcd_1_14.gif) | ![zhongjungyuan screen](./images/zjy169s0800tg01.gif) |
 
 <a name="features"></a>
 
@@ -19,24 +19,24 @@ TinyDrawer is a collection of drawing methods for [Rasberry Pi Pico devices](htt
 #### TinyDrawer
 
 ```python
-from tiny_drawer import TinyDrawer
+import tiny_drawer
 
 # Initilize TinyDrawer
-td = TinyDrawer()
+td = tiny_drawer.TinyDrawer()
 ```
 
 You can change the zoom level and display's width and height
 
 ```python
 # Initilize TinyDrawer
-td = TinyDrawer(display_w = 240, display_h = 135, zoom = 5)
+td = tiny_drawer.TinyDrawer(display_w = 240, display_h = 135, zoom = 5)
 ```
 
 
 #### Sprite Buffer
 Just like PICO-8, TinyDrawer comes with the sprite buffer that can store 32 sprites (8 columns and 4 rows, and each sprite is 8x8 pixels) by default. Design your sprites using [TinyDrawer Sprite Buffer Editor](https://html-preview.github.io/?url=https://github.com/saranomy/tinydrawer/blob/master/editor.html)
 
-![alt text](https://github.com/Saranomy/TinyDrawer/blob/main/images/editor.png?raw=true)
+![alt text](./images/editor.png)
 
 At the bottom, copy the Hex String, and call `set_buffer_hex(hex_string)` to load this sprite buffer to your program.
 
@@ -57,7 +57,7 @@ td.set_buffer(bytearray(64 * w * h), buffer_w = w, buffer_h = h)
 
 The sprite index `n` indicates which sprite from the Sprite Buffer should be drawn. The top-left sprite has an index of `n = 0`, while the first sprite in the second row has an index of `n = 8`.
 
-![sprite position](https://github.com/Saranomy/TinyDrawer/blob/main/images/sprites.png?raw=true)
+![sprite position](./images/sprites.png)
 
 #### Draw Sprite
 
@@ -150,7 +150,7 @@ In this demo, we use [Pi Pico W](https://www.pishop.ca/product/raspberry-pi-pico
 1. Complete the Get Started guide with the [Pi Pico](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico)
 2. Install [Thonny](https://thonny.org/), and connect to the Pi Pico
 
-![alt text](https://github.com/Saranomy/TinyDrawer/blob/main/images/thonny.png?raw=true)
+![alt text](./images/thonny.png)
 
 3. Upload `lc_1inch14.py` to the Pi Pico. This is a demo file from [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) tutorial. We modified it to be used on different screen sizes and orientations. If you use a different display, use the demo file from your manufacturer, make sure that the class is a child of `framebuf.FrameBuffer`
 
@@ -159,7 +159,7 @@ class LCD_1inch14(framebuf.FrameBuffer):
     ...
 ```
 
-4. Upload `tiny_drawer.py` and [example_mario.py](https://github.com/Saranomy/TinyDrawer/blob/main/example_mario.py) to the Pi Pico
+4. Upload `tiny_drawer.py`, `example_mario.py` to the Pi Pico
 5. Open `example_mario.py` on Thonny, and check the configuration of TinyDrawer
 
 ```python
@@ -175,7 +175,7 @@ td = tiny_drawer.TinyDrawer(display_w = display_w, display_h = display_h)
 #### Next Step
 Upload `example_snake.py` and run it
 
-![waveshare snake](https://github.com/Saranomy/TinyDrawer/blob/main/images/snake_on_lcd_1_14.gif?raw=true)
+![waveshare snake](./images/snake_on_lcd_1_14.gif)
 
 
 <a name="license"></a>
