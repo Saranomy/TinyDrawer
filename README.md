@@ -18,41 +18,36 @@ A collection of drawing methods inspired by [PICO-8 game engine](https://www.lex
 
 ## Features
 
-#### TinyDrawer
-
-```python
-import tiny_drawer
-
-# Initilize TinyDrawer
-td = tiny_drawer.TinyDrawer()
-```
-
-You can change the zoom level and display's width and height
-
-```python
-# Initilize TinyDrawer
-td = tiny_drawer.TinyDrawer(display_w = 240, display_h = 135, zoom = 5)
-```
-
-
 #### Sprite Buffer
 Just like PICO-8, TinyDrawer comes with the sprite buffer that can store 32 sprites (8 columns and 4 rows, and each sprite is 8x8 pixels) by default. Design your sprites using [TinyDrawer Sprite Buffer Editor](https://html-preview.github.io/?url=https://github.com/saranomy/tinydrawer/blob/master/editor.html)
 
 ![alt text](./images/editor.png)
 
-At the bottom, copy the Hex String, and call `set_buffer_hex(hex_string)` to load this sprite buffer to your program.
+At the bottom, copy the Hex String, and initialize the TinyDrawer to load this sprite buffer to your program.
+
+#### TinyDrawer
+
+Call `TinyDrawer(hex_string, buffer_w, buffer_h, display_w, display_h, zoom)` to create the TinyDrawer object
 
 ```python
-# replace the sprite buffer data
-td.set_buffer_hex("000877004fff94ff...") # <- arg: your hex string
+import tinydrawer
+
+# Initialize TinyDrawer with the hex string from the Editor
+td = TinyDrawer("000877004fff94ff...") # <- arg: your hex string
 ```
 
-You can change the sprite buffer size by calling `set_buffer(buffer, buffer_w, buffer_h)`.
+You can change the zoom level and display's width and height
+
+```python
+td = TinyDrawer("000877004fff94ff...", display_w = 240, display_h = 135, zoom = 5)
+```
+
+You can later change the sprite buffer size by calling `set_buffer_hex(hex_string, buffer_w, buffer_h)`.
 
 ```python
 # change buffer size to 12 x 2
 w, h = 12, 2
-td.set_buffer(bytearray(64 * w * h), buffer_w = w, buffer_h = h)
+td.set_buffer_hex("000877004fff94ff...", buffer_w = w, buffer_h = h)
 ```
 
 #### Sprite Index

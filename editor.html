@@ -88,9 +88,10 @@
   // Detect change from user
   hexString.addEventListener('input', (event) => {
     if (!isProgrammaticChange || document.activeElement === hexString) {
-      let content = hexString.value
-      if (content.length === 32 * 64) {
+      let content = hexString.value.replaceAll("\n", "").replaceAll(" ", "")
+      if (content.length >= 32 * 64) {
         updateGrid(content)
+        hexString.value = content
       }
     }
     // Reset the flag after detecting user change
@@ -107,11 +108,11 @@
 
   // Create grid
   for (let y = 0; y < 32; y++) {
-    let index = Math.floor(y / 8)
+    let index = Math.floor(y / 8) % 2
     for (let x = 0; x < 64; x++) {
       const cell = document.createElement('div')
       cell.className = 'cell'
-      if(x > 0 && x % 8 == 0) index++
+      if(x > 0 && x % 8 == 0) index = (index + 1) % 2
       cell.dataset.colorIndex = index.toString(16)
       grid.appendChild(cell)
       hexData += cell.dataset.colorIndex

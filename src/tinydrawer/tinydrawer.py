@@ -6,21 +6,21 @@
 import framebuf
 
 class TinyDrawer:
-    def __init__(self, buffer_w: int = 8, buffer_h: int = 4, display_w: int = 240, display_h: int = 135, zoom: int = 5):
+    def __init__(self, hex_string: str, buffer_w: int = 8, buffer_h: int = 4, display_w: int = 240, display_h: int = 135, zoom: int = 5):
         """
-        Create TinyDrawer object and the buffer that stores sprites.
+        Create TinyDrawer object and the buffer that stores sprites. 
         Default buffer is 8 columns by 4 rows where each sprite is 8 by 8 pixels
 
         Args:
+            hex_string (string): A string representation of the sprite buffer, length must be a multiple of 64
             buffer_w (int): A number of sprites the buffer can store horizontally
             buffer_h (int): A number of sprites the buffer can store vertically
             display_w (int): Width of the display in pixels
             display_h (int): Height of the display in pixels
             zoom (int): Scale of the pixels
         """
-        self.buffer_w = buffer_w
-        self.buffer_h = buffer_h
-        self.buffer = bytearray(64 * buffer_w * buffer_h)
+        if not self.set_buffer_hex(hex_string, buffer_w, buffer_h):
+            return
         self.display_w = display_w
         self.display_h = display_h
         self.zoom = zoom
@@ -45,25 +45,6 @@ class TinyDrawer:
             self.c333_565(7, 6, 5), # 15 light-peach
         ]
         
-    def set_buffer(self, buffer: bytearray, buffer_w: int = 8, buffer_h: int = 4) -> bool:
-        """
-        Set the sprite buffer
-        
-        Args:
-            buffer (bytearray): The length must be a multiple of 64 (a minimum of 1 by 1 sprite)
-            buffer_w (int): A number of sprites the buffer can store horizontally
-            buffer_h (int): A number of sprites the buffer can store vertically
-            
-        Returns:
-            bool: True if buffer is set successfully
-        """
-        if self.buffer_w < 0 or self.buffer_h < 0 or len(buffer) != 64 * buffer_w * buffer_h:
-            return False
-        self.buffer_w = buffer_w
-        self.buffer_h = buffer_h
-        self.buffer = buffer
-        return True
-        
     def set_buffer_hex(self, hex_string: str, buffer_w: int = 8, buffer_h: int = 4) -> bool:
         """
         Set the sprite buffer using string containing hexadecimal numbers (1 character = 1-byte color)
@@ -76,8 +57,14 @@ class TinyDrawer:
         Returns:
             bool: True if buffer is set successfully
         """
-        hex_string = hex_string.strip().lower()
-        return self.set_buffer(buffer = bytearray(int(char, 16) for char in hex_string), buffer_w = buffer_w, buffer_h = buffer_h)
+        hex_string = hex_string.replace("\n", "").strip().lower()
+        buffer = bytearray(int(char, 16) for char in hex_string)
+        if buffer_w < 0 or buffer_h < 0 or len(buffer) != 64 * buffer_w * buffer_h:
+            return False
+        self.buffer_w = buffer_w
+        self.buffer_h = buffer_h
+        self.buffer = buffer
+        return True
     
     def spr(self, fb: framebuf.FrameBuffer, n: int, x: int, y: int, w: int = 1, h: int = 1, flip_x: bool = False, flip_y: bool = False): 
         """
@@ -165,3 +152,4 @@ class TinyDrawer:
         """
         if r | g | b == 0: return 0
         return 0b111_000_11_000_11_000 | (g & 7) | (r & 7) << 5 | ((b & 7) << 10)
+
