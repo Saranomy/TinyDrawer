@@ -46,8 +46,7 @@ You can later change the sprite buffer size by calling `set_buffer_hex(hex_strin
 
 ```python
 # change buffer size to 12 x 2
-w, h = 12, 2
-td.set_buffer_hex("000877004fff94ff...", buffer_w = w, buffer_h = h)
+td.set_buffer_hex("000877004fff94ff...", buffer_w = 12, buffer_h = 2)
 ```
 
 #### Sprite Index
@@ -116,7 +115,7 @@ For example, to draw the black color pixels on the framebuf:
 4. Call `str(fb, n, x, y)` to draw
 5. Optional: Call `pal()` to clear the color replacement
 
-Another example, we can turn Mario into Luigi by swapping colors on sprite `0`
+Another example, we can turn Mario into Luigi by swapping colors at sprite index `0`
 
 ```python
 # replace any red with green

@@ -50,7 +50,7 @@ class TinyDrawer:
         Set the sprite buffer using string containing hexadecimal numbers (1 character = 1-byte color)
         
         Args:
-            hex_string (string): A string representation of the buffer. The length must be a multiple of 64 (a minimum of 1 by 1 sprite)
+            hex_string (string): A string representation of the buffer, length must be a multiple of 64
             buffer_w (int): A number of sprites the buffer can store horizontally
             buffer_h (int): A number of sprites the buffer can store vertically
             
@@ -58,7 +58,7 @@ class TinyDrawer:
             bool: True if buffer is set successfully
         """
         hex_string = hex_string.replace("\n", "").strip().lower()
-        buffer = bytearray(int(char, 16) for char in hex_string)
+        buffer = bytes(bytearray(int(char, 16) for char in hex_string))
         if buffer_w < 0 or buffer_h < 0 or len(buffer) != 64 * buffer_w * buffer_h:
             return False
         self.buffer_w = buffer_w
