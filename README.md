@@ -1,6 +1,6 @@
 # TinyDrawer
 
-Install [TinyDrawer](https://pypi.org/project/tinydrawer/) package on [Thonny](https://thonny.org)
+Install [TinyDrawer]() package on [Thonny](https://thonny.org)
 
 - [Features](#features)
 - [Get Started](#get_started)
@@ -8,7 +8,7 @@ Install [TinyDrawer](https://pypi.org/project/tinydrawer/) package on [Thonny](h
 - [License](#license)
 
 ## 2D Games for Pi Pico
-TinyDrawer is a collection of drawing methods for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org) by [Saranomy](https://github.com/Saranomy). In its current development stage, it has a collection of methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) to ultimately render pixels to [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
+A collection of drawing methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) built for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org). These methods handle drawing on the high-level while pushing pixels to the RGB565 [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
 
 | [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) | [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html) |
 | - | - |
