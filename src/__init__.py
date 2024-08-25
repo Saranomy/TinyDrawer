@@ -1,5 +1,5 @@
-__name__ = "tiny_drawer"
-__package__ = "tiny_drawer"
+__name__ = "tinydrawer"
+__package__ = "tinydrawer"
 __version__ = '0.1'
 __author__ = "Saranomy"
 
