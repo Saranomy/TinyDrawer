@@ -136,31 +136,34 @@ td.pal()
 
 ## Get Started
 
-In this demo, we use [Pi Pico W](https://www.pishop.ca/product/raspberry-pi-pico-w/) and [Waveshare's Pico LCD 1.14](https://www.pishop.ca/product/1-14inch-lcd-display-module-for-raspberry-pi-pico-65k-colors-240-135-spi/) which has joystick controller and buttons. We will run *example_mario.py* on the Pico. You can use any Pico device and any display screen as long as they meet the following requirements.
-
 #### Hardware Requirement
-- Have one of the [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico)
+In this demo, we will use [Pi Pico W](https://www.pishop.ca/product/raspberry-pi-pico-w/) and [Waveshare's Pico LCD 1.14](https://www.pishop.ca/product/1-14inch-lcd-display-module-for-raspberry-pi-pico-65k-colors-240-135-spi/) which has joystick controller and buttons. We will run *example_mario.py* on the Pico. You can use any device and any display screen as long as they meet the following requirements
+- Have a [Rasberry Pi Pico device](https://www.raspberrypi.com/products/raspberry-pi-pico) or Pico compatible device
 - Have a SPI [ST7789](https://newhavendisplay.com/content/datasheets/ST7789V.pdf) display connected to Pi Pico
 - Make sure the display color format is set to RGB565
 - Have a code that can send [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html) to the display
 
 
-#### Let's Run
+#### Install
 
 1. Complete the Get Started guide with the [Pi Pico](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico)
-2. Install [Thonny](https://thonny.org/), and connect to the Pi Pico
+2. Open [Thonny](https://thonny.org/), and connect to the Pi Pico
 
-![alt text](./images/thonny.png)
+![thonny](./images/thonny.png)
 
-3. Upload `lc_1inch14.py` to the Pi Pico. This is a demo file from [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) tutorial. We modified it to be used on different screen sizes and orientations. If you use a different display, use the demo file from your manufacturer, make sure that the class is a child of `framebuf.FrameBuffer`
+3. Go to Tools -> Manage Packages. Then search for [tinydrawer](https://pypi.org/project/tinydrawer/) and install it to the Pi Pico
+
+![search tinydrawer](./images/tinydrawer.png)
+
+4. Upload `lc_1inch14.py` to the Pi Pico. This is a demo file from [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) tutorial. We modified it to be used on different screen sizes and orientations. If you use a different display, use the demo file from your manufacturer, make sure that the class is a child of `framebuf.FrameBuffer`
 
 ```python
 class LCD_1inch14(framebuf.FrameBuffer):
     ...
 ```
 
-4. Upload `tiny_drawer.py`, `example_mario.py` to the Pi Pico
-5. Open `example_mario.py` on Thonny, and check the configuration of TinyDrawer
+4. Upload `example_mario.py` to the Pi Pico
+5. Open `example_mario.py` on Thonny, and check the parameters on the TinyDrawer
 
 ```python
 display_w = 240
