@@ -8,7 +8,7 @@ Install [TinyDrawer](https://pypi.org/project/tinydrawer) package on [Thonny](ht
 - [License](#license)
 
 ## 2D Games for Pi Pico
-A collection of drawing methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) built for [Rasberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org). These methods handle drawing on the high-level while pushing pixels to the RGB565 [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
+A collection of drawing methods inspired by [PICO-8 game engine](https://www.lexaloffle.com/pico-8.php) built for [Raspberry Pi Pico devices](https://www.raspberrypi.com/products/raspberry-pi-pico) written in [MicroPython](https://micropython.org). These methods handle drawing on the high-level while pushing pixels to the RGB565 [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html).
 
 | [Waveshare's Pico LCD 1.14](https://www.waveshare.com/wiki/Pico-LCD-1.14) | [ZhongJungYuan's 1.69 TFT LCD](https://www.aliexpress.com/i/1005004721706705.html) |
 | - | - |
@@ -134,7 +134,7 @@ td.pal()
 
 #### Hardware Requirement
 In this demo, we will use [Pi Pico W](https://www.pishop.ca/product/raspberry-pi-pico-w/) and [Waveshare's Pico LCD 1.14](https://www.pishop.ca/product/1-14inch-lcd-display-module-for-raspberry-pi-pico-65k-colors-240-135-spi/) which has joystick controller and buttons. We will run *example_mario.py* on the Pico. You can use any device and any display screen as long as they meet the following requirements
-- Have a [Rasberry Pi Pico device](https://www.raspberrypi.com/products/raspberry-pi-pico) or Pico compatible device
+- Have a [Raspberry Pi Pico device](https://www.raspberrypi.com/products/raspberry-pi-pico) or Pico compatible device
 - Have a SPI [ST7789](https://newhavendisplay.com/content/datasheets/ST7789V.pdf) display connected to Pi Pico
 - Make sure the display color format is set to RGB565
 - Have a code that can send [framebuf.FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html) to the display
