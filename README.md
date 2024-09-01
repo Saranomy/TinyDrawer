@@ -165,7 +165,7 @@ class LCD_1inch14(framebuf.FrameBuffer):
 display_w = 240
 display_h = 135
 
-td = tiny_drawer.TinyDrawer(display_w = display_w, display_h = display_h)
+td = TinyDrawer("000877004fff94ff...", display_w = display_w, display_h = display_h)
 ...
 ```
 
